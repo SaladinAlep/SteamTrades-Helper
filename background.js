@@ -24,8 +24,8 @@ chrome.alarms.onAlarm.addListener(function() {
             let permalink = links[links.length - 1].getAttribute('href');
             if (permalinks.includes(permalink))
                 continue;
-            let author = comments[i].getElementsByClassName("author_name")[0].innerText;
-            let message = comments[i].getElementsByClassName("comment_body_default markdown")[0].innerText;
+            let author = comments[i].getElementsByClassName("author_name")[0].innerText.trim();
+            let message = comments[i].getElementsByClassName("comment_body_default markdown")[0].innerText.trim();
             permalinks.push(permalink);
             chrome.notifications.create('', {title: `New message from ${author}`, message: message, type: 'basic', iconUrl: 'images/icon64.png'});
         }
